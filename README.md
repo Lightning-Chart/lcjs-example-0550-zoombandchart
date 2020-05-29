@@ -98,14 +98,14 @@ Direct developer email support can be purchased through a [Support Plan][4] or b
 © Arction Ltd 2009-2020. All rights reserved.
 
 
-[ZoomBandChart]: https://www.arction.com/lightningchart-js-api-documentation/v1.2.0/classes/zoombandchart.html
-[ChartXY]: https://www.arction.com/lightningchart-js-api-documentation/v1.2.0/classes/chartxy.html
-[Axis]: https://www.arction.com/lightningchart-js-api-documentation/v1.2.0/classes/axis.html
-[AxisTickStrategies]: https://www.arction.com/lightningchart-js-api-documentation/v1.2.0/globals.html#axistickstrategies
-[HorizontalLegendBox]: https://www.arction.com/lightningchart-js-api-documentation/v1.2.0/globals.html#legendboxbuilders.horizontallegendbox
-[VerticalLegendBox]: https://www.arction.com/lightningchart-js-api-documentation/v1.2.0/globals.html#legendboxbuilders.verticallegendbox
-[UIOrigins]: https://www.arction.com/lightningchart-js-api-documentation/v1.2.0/globals.html#uiorigins
-[SolidFill]: https://www.arction.com/lightningchart-js-api-documentation/v1.2.0/classes/solidfill.html
-[ColorRGBA]: https://www.arction.com/lightningchart-js-api-documentation/v1.2.0/globals.html#colorrgba
-[SolidLine]: https://www.arction.com/lightningchart-js-api-documentation/v1.2.0/classes/solidline.html
+[ZoomBandChart]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/classes/zoombandchart.html
+[ChartXY]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/classes/chartxy.html
+[Axis]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/classes/axis.html
+[AxisTickStrategies]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/globals.html#axistickstrategies
+[HorizontalLegendBox]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/globals.html#legendboxbuilders.horizontallegendbox
+[VerticalLegendBox]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/globals.html#legendboxbuilders.verticallegendbox
+[UIOrigins]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/globals.html#uiorigins
+[SolidFill]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/classes/solidfill.html
+[ColorRGBA]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/globals.html#colorrgba
+[SolidLine]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/classes/solidline.html
 
