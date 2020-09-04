@@ -13,7 +13,8 @@ const {
     PointSeries,
     ColorHEX,
     LegendBoxBuilders,
-    UIOrigins
+    UIOrigins,
+    Themes
 } = lcjs
 
 // Extract required parts from XYData Generator.
@@ -24,25 +25,26 @@ const {
 } = require('@arction/xydata')
 
 // Create a Dashboard, with a single column and two rows.
-const dashboard = lightningChart().Dashboard( {
+const dashboard = lightningChart().Dashboard({
+    // theme: Themes.dark 
     numberOfColumns: 1,
     numberOfRows: 2
-} )
+})
     // Set the row height for the top Cell in Dashboard.
     // As the bottom row is default (1), the top row height will be 3/4 of the
     // available Dashboard height.
     .setRowHeight(0, 3)
 
 // Add XY Chart to top Cell in Dashboard.
-const chart = dashboard.createChartXY( {
+const chart = dashboard.createChartXY({
     columnIndex: 0,
     columnSpan: 1,
     rowIndex: 0,
     rowSpan: 1
-} )
+})
 
 // Add Zoom Band Chart to bottom Cell in Dashboard.
-const zoomBandChart = dashboard.createZoomBandChart( {
+const zoomBandChart = dashboard.createZoomBandChart({
     columnIndex: 0,
     columnSpan: 1,
     rowIndex: 1,
@@ -50,90 +52,92 @@ const zoomBandChart = dashboard.createZoomBandChart( {
     // Specify the Axis for the Zoom Band Chart to follow.
     // The Zoom Band Chart will imitate all Series present in that Axis.
     axis: chart.getDefaultAxisX()
-} )
+})
     // Modify the styling of the Series in Zoom Band Chart.
-    .setSeriesStyle( ( zoomBandSeries, ref ) => {
+    .setSeriesStyle((zoomBandSeries, ref) => {
         // Style the 'OHLC Series' in Zoom Band Chart.
-        if ( ref instanceof OHLCSeries ) {
-            ( zoomBandSeries ).setStrokeStyle( new SolidLine( {
+        if (ref instanceof OHLCSeries) {
+            (zoomBandSeries).setStrokeStyle(new SolidLine({
                 thickness: 1,
-                fillStyle: new SolidFill( { color: ColorHEX( '#0f0' ) } )
-            } ) )
+                fillStyle: new SolidFill({ color: ColorHEX('#0f0') })
+            }))
         }
         // Style the 'Point Series' in Zoom Band Chart.
-        if ( ref instanceof PointSeries ) {
-            ( zoomBandSeries ).setStrokeStyle( new SolidLine( {
+        if (ref instanceof PointSeries) {
+            (zoomBandSeries).setStrokeStyle(new SolidLine({
                 thickness: 1,
-                fillStyle: new SolidFill( { color: ColorHEX( '#bd3d17' ) } )
-            } ) )
+                fillStyle: new SolidFill({ color: ColorHEX('#bd3d17') })
+            }))
         }
-    } )
+    })
 
 // Do not animate Y Axis Scale changes on either Charts.
 chart.getDefaultAxisY()
-    .setAnimationScroll( undefined )
+    .setAnimationScroll(undefined)
 zoomBandChart.getDefaultAxisY()
-    .setAnimationScroll( undefined )
+    .setAnimationScroll(undefined)
+zoomBandChart.band.setValueStart(300)
+zoomBandChart.band.setValueEnd(500)
 
 // Add different Series to the XY Chart.
 const line = chart.addLineSeries()
 const ohlc = chart.addOHLCSeries()
 const points = chart.addPointSeries()
-    .setPointSize( 2 )
-    .setPointFillStyle( new SolidFill( { color: ColorHEX( '#bd3d17' ) } ) )
+    .setPointSize(2)
+    .setPointFillStyle(new SolidFill({ color: ColorHEX('#bd3d17') }))
 const areaRange = chart.addAreaRangeSeries()
 
 // Fill the Line Series with arbitrary data.
 createProgressiveTraceGenerator()
-    .setNumberOfPoints( 1000 )
+    .setNumberOfPoints(1000)
     .generate()
     .toPromise()
-    .then( ( data ) => {
+    .then((data) => {
         // Offset the Y value of each point, then push to the Series.
-        line.add(data.map( ( point ) => ( {x: point.x, y: point.y * .1 + 100 })))
+        line.add(data.map((point) => ({ x: point.x, y: point.y * .1 + 100 })))
     })
 
 // Fill the OHLC Series with arbitrary data.
 createOHLCGenerator()
-    .setNumberOfPoints( 1000 )
+    .setNumberOfPoints(1000)
     .generate()
     .toPromise()
-    .then ( (data) => {
+    .then((data) => {
         ohlc.add(data)
     })
 
 // Fill the Point Series with arbitrary data.
 createProgressiveRandomGenerator()
-    .setNumberOfPoints( 1000 )
+    .setNumberOfPoints(1000)
     .generate()
     .toPromise()
-    .then( (data) => {
+    .then((data) => {
         // Offset the Y value of each point, then push to the Series.
-        points.add( data.map( (point) => ( { x: point.x, y: point.y * 5 + 95 } ) ))
+        points.add(data.map((point) => ({ x: point.x, y: point.y * 5 + 95 })))
     })
 
 // Fill the Area Series with arbitrary data. 
-Promise.all( [
+Promise.all([
     createProgressiveRandomGenerator()
-        .setNumberOfPoints( 1000 )
+        .setNumberOfPoints(1000)
         .generate()
         .toPromise(),
     createProgressiveRandomGenerator()
-        .setNumberOfPoints( 1000 )
+        .setNumberOfPoints(1000)
         .generate()
         .toPromise()
-] ).then( (data) => {
+]).then((data) => {
     // Offset the high and low values for each point, then push to the Series.
-    areaRange.add( data[0].map( ( high, i ) => ( {
+    areaRange.add(data[0].map((high, i) => ({
         position: high.x,
         high: high.y + 92,
         low: data[1][i].y + 90
-    } ) ) )
-} )
+    })))
+})
 
 // Add LegendBox to the XY Chart. Note that hiding a Series in XY Chart will also
 // hide corresponding Series in the Zoom Band Chart.
-chart.addLegendBox( LegendBoxBuilders.VerticalLegendBox )
-    .setPosition( {x: 2, y: 100 } )
-    .setOrigin( UIOrigins.LeftTop )
-    .add( chart )
+chart.addLegendBox(LegendBoxBuilders.VerticalLegendBox)
+    .setPosition({ x: 2, y: 100 })
+    .setOrigin(UIOrigins.LeftTop)
+    .add(chart)
