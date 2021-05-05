@@ -42,6 +42,7 @@ const chart = dashboard.createChartXY({
     rowIndex: 0,
     rowSpan: 1
 })
+    .setTitle('')
 
 // Add Zoom Band Chart to bottom Cell in Dashboard.
 const zoomBandChart = dashboard.createZoomBandChart({
@@ -138,6 +139,4 @@ Promise.all([
 // Add LegendBox to the XY Chart. Note that hiding a Series in XY Chart will also
 // hide corresponding Series in the Zoom Band Chart.
 chart.addLegendBox(LegendBoxBuilders.VerticalLegendBox)
-    .setPosition({ x: 2, y: 100 })
-    .setOrigin(UIOrigins.LeftTop)
     .add(chart)
