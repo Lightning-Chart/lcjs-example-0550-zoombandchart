@@ -1,6 +1,6 @@
-# Zoom Band Chart
+# JavaScript Zoom Band Chart
 
-![Zoom Band Chart](zoomBandChart.png)
+![JavaScript Zoom Band Chart](zoomBandChart.png)
 
 This demo application belongs to the set of examples for LightningChart JS, data visualization library for JavaScript.
 
