@@ -7,13 +7,7 @@ const lcjs = require('@arction/lcjs')
 // Extract required parts from LightningChartJS.
 const {
     lightningChart,
-    OHLCSeries,
-    SolidFill,
-    SolidLine,
-    PointSeries,
-    ColorHEX,
     LegendBoxBuilders,
-    UIOrigins,
     Themes
 } = lcjs
 
@@ -26,7 +20,7 @@ const {
 
 // Create a Dashboard, with a single column and two rows.
 const dashboard = lightningChart().Dashboard({
-    // theme: Themes.dark 
+    // theme: Themes.darkGold 
     numberOfColumns: 1,
     numberOfRows: 2
 })
@@ -54,23 +48,6 @@ const zoomBandChart = dashboard.createZoomBandChart({
     // The Zoom Band Chart will imitate all Series present in that Axis.
     axis: chart.getDefaultAxisX()
 })
-    // Modify the styling of the Series in Zoom Band Chart.
-    .setSeriesStyle((zoomBandSeries, ref) => {
-        // Style the 'OHLC Series' in Zoom Band Chart.
-        if (ref instanceof OHLCSeries) {
-            (zoomBandSeries).setStrokeStyle(new SolidLine({
-                thickness: 1,
-                fillStyle: new SolidFill({ color: ColorHEX('#0f0') })
-            }))
-        }
-        // Style the 'Point Series' in Zoom Band Chart.
-        if (ref instanceof PointSeries) {
-            (zoomBandSeries).setStrokeStyle(new SolidLine({
-                thickness: 1,
-                fillStyle: new SolidFill({ color: ColorHEX('#bd3d17') })
-            }))
-        }
-    })
 
 // Do not animate Y Axis Scale changes on either Charts.
 chart.getDefaultAxisY()
@@ -85,7 +62,6 @@ const line = chart.addLineSeries()
 const ohlc = chart.addOHLCSeries()
 const points = chart.addPointSeries()
     .setPointSize(2)
-    .setPointFillStyle(new SolidFill({ color: ColorHEX('#bd3d17') }))
 const areaRange = chart.addAreaRangeSeries()
 
 // Fill the Line Series with arbitrary data.
@@ -140,3 +116,8 @@ Promise.all([
 // hide corresponding Series in the Zoom Band Chart.
 chart.addLegendBox(LegendBoxBuilders.VerticalLegendBox)
     .add(chart)
+    // Dispose example UI elements automatically if they take too much space. This is to avoid bad UI on mobile / etc. devices.
+    .setAutoDispose({
+        type: 'max-width',
+        maxWidth: 0.30,
+    })
