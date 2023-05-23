@@ -98,14 +98,14 @@ Direct developer email support can be purchased through a [Support Plan][4] or b
 © LightningChart Ltd 2009-2022. All rights reserved.
 
 
-[Zoom Band Chart]: https://lightningchart.com/lightningchart-js-api-documentation/v4.0.0/classes/ZoomBandChart.html
-[XY cartesian chart]: https://lightningchart.com/lightningchart-js-api-documentation/v4.0.0/classes/ChartXY.html
-[Axis]: https://lightningchart.com/lightningchart-js-api-documentation/v4.0.0/classes/Axis.html
-[Axis tick strategies]: https://lightningchart.com/lightningchart-js-api-documentation/v4.0.0/variables/AxisTickStrategies.html
-[Horizontal legend box]: https://lightningchart.com/lightningchart-js-api-documentation/v4.0.0/variables/LegendBoxBuilders.html
-[Vertical legend box]: https://lightningchart.com/lightningchart-js-api-documentation/v4.0.0/variables/LegendBoxBuilders.html
-[UI position origins]: https://lightningchart.com/lightningchart-js-api-documentation/v4.0.0/variables/UIOrigins.html
-[Solid FillStyle]: https://lightningchart.com/lightningchart-js-api-documentation/v4.0.0/classes/SolidFill.html
-[RGBA color factory]: https://lightningchart.com/lightningchart-js-api-documentation/v4.0.0/functions/ColorRGBA.html
-[Solid LineStyle]: https://lightningchart.com/lightningchart-js-api-documentation/v4.0.0/classes/SolidLine.html
+[Zoom Band Chart]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/classes/ZoomBandChart.html
+[XY cartesian chart]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/classes/ChartXY.html
+[Axis]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/classes/Axis.html
+[Axis tick strategies]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/variables/AxisTickStrategies.html
+[Horizontal legend box]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/variables/LegendBoxBuilders.html
+[Vertical legend box]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/variables/LegendBoxBuilders.html
+[UI position origins]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/variables/UIOrigins.html
+[Solid FillStyle]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/classes/SolidFill.html
+[RGBA color factory]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/functions/ColorRGBA.html
+[Solid LineStyle]: https://lightningchart.com/lightningchart-js-api-documentation/v4.1.0/classes/SolidLine.html
 
