@@ -19,53 +19,26 @@ The demo can be used as an example or a seed project. Local execution requires t
 
 ## Description
 
-This example shows the basic usage of a Zoom Band Chart.
+_Zoom Band Chart_.
 
-The Zoom Band Chart is attached to an Axis of a separate XY Chart. It will then imitate the Series present in the attached Axis and display them accordingly. The band in Zoom Band Chart can be used to change the view in the XY Chart, making it an easy way to inspect the Series in the Chart.
-
-When attaching to an X Axis, the Zoom Band Chart should be placed in a row either above or below the XY Chart it is attached to.
-When attaching to a Y Axis, the Zoom Band Chart should be placed in a column next to the XY Chart it is attached to.
-
-The Zoom Band Chart can only be created as a part of a Dashboard.
+This example showcases the Zoom Band Chart feature.
+This is a chart type intended for displaying a duplicate, zoomed out view of 1 or more charts/series.
+The Zoom Band Chart comes with convenient built-in interactions that allow the user to select the view on the full data set. Interacting with the Zoom Band Chart in that way mirrors the changes on the original, attached charts.
 
 The Zoom Band Chart can be created with few simple lines of code:
 
 ```javascript
-// Create a new Dashboard with one column and two rows.
-const dashboard = lightningChart().Dashboard({
-    numberOfColumns: 1,
-    numberOfRows: 2,
-})
-
-// Create a new ChartXY inside the Dashboard.
-const chart = dashboard.createChartXY({
-    columnIndex: 0,
-    columnSpan: 1,
-    rowIndex: 0,
-    rowSpan: 1,
-})
-
-// Create a new Zoom Band Chart inside the Dashboard, and attach to the X Axis of the XY Chart created before.
-const zoomBandChart = dashboard.createZoomBandChart({
-    columnIndex: 0,
-    columnSpan: 1,
-    rowIndex: 1,
-    rowSpan: 1,
-    axis: chart.getDefaultAxisX(),
-})
+const zoomBandChart = lc.ZoomBandChart()
+zoomBandChart.add(mySeries1)
+zoomBandChart.add(mySeries2)
 ```
 
-The band of the Zoom Band Chart can be modified by using _ZoomBandChart.band_:
-
-```javascript
-// Change the color of the Band.
-zoomBandChart.band.setFillStyle(new SolidFill({ color: ColorHEX('#57a2') }))
-```
+Please find more detailed documentation of Zoom Band Chart features and commonly used methods in the [API documentation](https://lightningchart.com/js-charts/api-documentation) under `ZoomBandChart` class.
 
 
 ## API Links
 
-* [Zoom Band Chart]
+* [Zoom Band]
 * [XY cartesian chart]
 * [Axis]
 * [Axis tick strategies]
@@ -98,14 +71,14 @@ Direct developer email support can be purchased through a [Support Plan][4] or b
 © LightningChart Ltd 2009-2022. All rights reserved.
 
 
-[Zoom Band Chart]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/classes/ZoomBandChart.html
-[XY cartesian chart]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/classes/ChartXY.html
-[Axis]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/classes/Axis.html
-[Axis tick strategies]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/variables/AxisTickStrategies.html
-[Horizontal legend box]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/variables/LegendBoxBuilders.html
-[Vertical legend box]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/variables/LegendBoxBuilders.html
-[UI position origins]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/variables/UIOrigins.html
-[Solid FillStyle]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/classes/SolidFill.html
-[RGBA color factory]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/functions/ColorRGBA.html
-[Solid LineStyle]: https://lightningchart.com/js-charts/api-documentation/v4.2.0/classes/SolidLine.html
+[Zoom Band]: https://lightningchart.com/js-charts/api-documentation/v5.0.1/
+[XY cartesian chart]: https://lightningchart.com/js-charts/api-documentation/v5.0.1/classes/ChartXY.html
+[Axis]: https://lightningchart.com/js-charts/api-documentation/v5.0.1/classes/Axis.html
+[Axis tick strategies]: https://lightningchart.com/js-charts/api-documentation/v5.0.1/variables/AxisTickStrategies.html
+[Horizontal legend box]: https://lightningchart.com/js-charts/api-documentation/v5.0.1/variables/LegendBoxBuilders.html
+[Vertical legend box]: https://lightningchart.com/js-charts/api-documentation/v5.0.1/variables/LegendBoxBuilders.html
+[UI position origins]: https://lightningchart.com/js-charts/api-documentation/v5.0.1/variables/UIOrigins.html
+[Solid FillStyle]: https://lightningchart.com/js-charts/api-documentation/v5.0.1/classes/SolidFill.html
+[RGBA color factory]: https://lightningchart.com/js-charts/api-documentation/v5.0.1/functions/ColorRGBA.html
+[Solid LineStyle]: https://lightningchart.com/js-charts/api-documentation/v5.0.1/classes/SolidLine.html
 
