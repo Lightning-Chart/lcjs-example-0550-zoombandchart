@@ -14,7 +14,7 @@ const dashboard = lightningChart()
     .Dashboard({
         numberOfColumns: 1,
         numberOfRows: 2,
-        // theme: Themes.darkGold
+        theme: Themes[new URLSearchParams(window.location.search).get('theme') || 'darkGold'] || undefined,
     })
     // Set the row height for the top Cell in Dashboard.
     // As the bottom row is default (1), the top row height will be 3/4 of the
