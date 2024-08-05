@@ -1,9 +1,9 @@
 /*
  * LightningChartJS example that showcases the Zoom Band Chart feature
  */
-const lcjs = require('@arction/lcjs')
-const xydata = require('@arction/xydata')
-const { lightningChart, AxisTickStrategies, Themes } = lcjs
+const lcjs = require('@lightningchart/lcjs')
+const xydata = require('@lightningchart/xydata')
+const { lightningChart, AxisTickStrategies, emptyFill, emptyLine, Themes } = lcjs
 const { createProgressiveTraceGenerator, createProgressiveRandomGenerator } = xydata
 
 const numberOfDays = 1000
@@ -51,16 +51,20 @@ const zoomBandChart = dashboard.createZoomBandChart({
 // Add Line and Point Series to the XY Chart.
 const lines = new Array(3).fill(0).map((_, i) => {
     return chart
-        .addLineSeries({
-            dataPattern: {
-                pattern: 'ProgressiveX',
-            },
+        .addPointLineAreaSeries({
+            dataPattern: 'ProgressiveX',
         })
+        .setAreaFillStyle(emptyFill)
+        .setPointFillStyle(emptyFill)
         .setStrokeStyle((strokeStyle) => strokeStyle.setThickness(1))
         .setName(`Line ${i}`)
 })
 
-const points = chart.addPointSeries().setPointSize(2)
+const points = chart
+    .addPointLineAreaSeries({ dataPattern: 'ProgressiveX' })
+    .setAreaFillStyle(emptyFill)
+    .setStrokeStyle(emptyLine)
+    .setPointSize(2)
 
 // Add the same Series to the Zoom Band Chart.
 lines.forEach((line) => zoomBandChart.add(line))
