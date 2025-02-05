@@ -38,7 +38,10 @@ chart.getDefaultAxisY().setAnimationScroll(undefined)
 chart
     .getDefaultAxisX()
     .setTickStrategy(AxisTickStrategies.DateTime)
-    .setInterval({ start: new Date(2001, 0, numberOfDays - 180).getTime(), end: new Date(2001, 0, numberOfDays).getTime() })
+    .setDefaultInterval((state) => ({
+        end: state.dataMax,
+        start: state.dataMax ? state.dataMax - 180 * 24 * 60 * 60 * 1000 : undefined,
+    }))
 
 // Add Zoom Band Chart to bottom Cell in Dashboard.
 const zoomBandChart = dashboard.createZoomBandChart({
