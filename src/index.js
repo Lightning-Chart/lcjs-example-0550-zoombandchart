@@ -30,6 +30,7 @@ const chart = dashboard
         columnSpan: 1,
         rowIndex: 0,
         rowSpan: 1,
+        legend: { visible: false },
     })
     .setTitle('')
 
@@ -54,20 +55,12 @@ const zoomBandChart = dashboard.createZoomBandChart({
 // Add Line and Point Series to the XY Chart.
 const lines = new Array(3).fill(0).map((_, i) => {
     return chart
-        .addPointLineAreaSeries({
-            dataPattern: 'ProgressiveX',
-        })
-        .setAreaFillStyle(emptyFill)
-        .setPointFillStyle(emptyFill)
+        .addLineSeries({})
         .setStrokeStyle((strokeStyle) => strokeStyle.setThickness(1))
         .setName(`Line ${i}`)
 })
 
-const points = chart
-    .addPointLineAreaSeries({ dataPattern: 'ProgressiveX' })
-    .setAreaFillStyle(emptyFill)
-    .setStrokeStyle(emptyLine)
-    .setPointSize(2)
+const points = chart.addPointSeries().setPointSize(2)
 
 // Add the same Series to the Zoom Band Chart.
 lines.forEach((line) => zoomBandChart.add(line))
@@ -80,7 +73,7 @@ createProgressiveRandomGenerator()
     .toPromise()
     .then((data) => {
         // Offset the Y value of each point, then push to the Series.
-        points.add(data.map((point) => ({ x: new Date(2001, 0, point.x).getTime(), y: point.y * 15 })))
+        points.appendJSON(data.map((point) => ({ x: new Date(2001, 0, point.x).getTime(), y: point.y * 15 })))
     })
 
 // Fill the Line Series with data.
@@ -90,6 +83,6 @@ lines.forEach((line, i) => {
         .generate()
         .toPromise()
         .then((data) => {
-            line.add(data.map((point) => ({ x: new Date(2001, 0, point.x).getTime(), y: point.y })))
+            line.appendJSON(data.map((point) => ({ x: new Date(2001, 0, point.x).getTime(), y: point.y })))
         })
 })
